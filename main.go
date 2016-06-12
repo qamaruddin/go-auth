@@ -11,6 +11,7 @@ func main() {
 	r := mux.NewRouter()
 	r.Handle("/", NotImplemented).Methods("GET")
 	r.Handle("/products", models.ProductsHandler)
+	r.Handle("/products/{slug}/feedback", models.AddFeedbackHandler)
 
 	http.ListenAndServe(":3000", r)
 }
