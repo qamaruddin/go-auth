@@ -10,7 +10,8 @@ import (
 func main() {
 	r := mux.NewRouter()
 	r.Handle("/", NotImplemented).Methods("GET")
-	r.Handle("/products", models.ProductsHandler)
+	r.Handle("/products", models.ProductsHandler).Methods("GET")
+	r.Handle("/products/{slug}/feedback", models.AddFeedbackHandler).Methods("POST")
 
 	http.ListenAndServe(":3000", r)
 }
